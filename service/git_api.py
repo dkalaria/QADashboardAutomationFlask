@@ -2,6 +2,10 @@ import requests
 
 
 class GitHubController(object):
+    """
+    to get the repository
+    """
+
     @staticmethod
     def get_list_repos(uname, passw):
         """
@@ -11,9 +15,16 @@ class GitHubController(object):
         """
         print "test start"
         response = requests.get('https://api.github.com/orgs/prosperllc/repos', auth=(uname, passw))
-        print "create_get_request", response.json()
+        print "create_get_request", response
         response_json = response.json()
         print response_json[0]["full_name"]
+        for i in range(0, 25):
+            respo = response_json[i]["full_name"].split("/")[-1]
+            print respo
+
+    """
+    to get the no of commites
+    """
 
     @staticmethod
     def get_list_commits(repo_name, uname, passw):
