@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard</title>
+  <title>AutoDashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -33,7 +33,7 @@
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-purple fixed sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -41,9 +41,9 @@
     <!-- Logo -->
     <a href="/dashboard" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>P</b>DB</span>
+      <span class="logo-mini"><b>a</b>DB</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Progress</b>DASHBOARD</span>
+      <span class="logo-lg"><b>Auto</b>DASHBOARD</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -175,7 +175,7 @@
               </div>
             </div>
             <div class="col-md-3">
-            <button type="button" class="btn btn-block btn-primary btn-sm col-md-12">Apply</button>
+            <button style="background-color: #605ca8; border-color: #605ca8;" id="apply" type="button" class="btn btn-block btn-primary btn-sm col-md-12">Apply</button>
             </div>
             <!-- /.col -->
           </div>
@@ -186,7 +186,7 @@
     </section>
     <!-- /.content -->
 
-    <section class="content">
+    <section id="order" class="content">
       <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title">order-svc</h3>
@@ -215,8 +215,12 @@
             <span class="info-box-icon bg-green"><i class="fa fa-file-text-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Testcases</span>
-              <span class="info-box-number">410</span>
+              <span style="display: inline-block;font-weight: normal;" class="info-box-text">Test-Cases:</span>
+              <span style="display: inline-block;font-weight: bold;" class="info-box-text">410</span>
+            </div>
+            <div class="info-box-content">
+                <span style="display: inline-block;font-weight: normal;" class="info-box-text">Automated:</span>
+                <span style="display: inline-block;font-weight: bold;" class="info-box-text">300</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -230,6 +234,9 @@
             <div class="info-box-content">
               <span class="info-box-text">Defects</span>
               <span class="info-box-number">14</span>
+              <i class="fa fa-circle-o text-red"></i> <span>PROD> [0]</span> &nbsp;
+              <i class="fa fa-circle-o text-yellow"></i> <span>STG2> [4]</span> &nbsp;
+              <i class="fa fa-circle-o text-aqua"></i> <span>QA32> [10]</span> &nbsp;
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -287,109 +294,6 @@
       </div>
       </div>
     </section>
-
-    <section class="content">
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">listings-svc</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-                <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-github"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">GitHub Commits</span>
-              <span class="info-box-number">22</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-file-text-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Testcases</span>
-              <span class="info-box-number">410</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-bug"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Defects</span>
-              <span class="info-box-number">14</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-line-chart"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Jenkins Success%</span>
-              <span class="info-box-number">94%</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <div class="col-md-6">
-        <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Jenkins History</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="line-chart" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-      </div>
-       <div class="col-md-6">
-        <div class="box box-info">
-          <div class="box-header with-border">
-              <h3 class="box-title">Service Health</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-              <h2>Status</h2>
-        <i class="fa fa-circle-o text-red"></i> <span>Down</span> &nbsp;
-        <i class="fa fa-circle-o text-yellow"></i> <span>Warning</span> &nbsp;
-        <i class="fa fa-circle-o text-aqua"></i> <span>Good</span> &nbsp;
-        </div>
-      </div>
-      </div>
-    </section>
-
   </div>
   <!-- /.content-wrapper -->
 
@@ -424,28 +328,21 @@
 <script src="../static/plugins/daterangepicker/daterangepicker.js"></script>
 <script type="text/javascript">
   $(function (){
-    //Initialize Select2 Elements
-    $(".select2").select2();
+    $.ajax({
+            url: '/getJenkinsData',
+            type: 'GET',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+    });
 
-    $('#daterange-btn').daterangepicker(
-        {
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-    );
-    // LINE CHART
-    var line = new Morris.Line({
+    $('#apply').click(function() {
+      $("#order").toggle();
+      
+      var line = new Morris.Line({
       element: 'line-chart',
       resize: true,
       data: [
@@ -466,6 +363,32 @@
       lineColors: ['#3c8dbc'],
       hideHover: 'auto'
     });
+    });
+
+    $("#order").toggle();
+
+    //Initialize Select2 Elements
+    $(".select2").select2();
+
+    $('#daterange-btn').daterangepicker(
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
+        },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
+    
+    
   });
 </script>
 
