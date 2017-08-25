@@ -15,59 +15,59 @@ class JiraController(object):
         print "Initialize"
 
     @staticmethod
-    def get_jira_user_auth(self, user_name=None, password=None):
+    def get_jira_user_auth(user_name=None, password=None):
+        """
+        To get JIRA user authentication
+        :param user_name: valid user name
+        :param password: password for the same user.
+        :return: return jira object
+        """
         if user_name != None and password != None:
             jira = JIRA(base_url, basic_auth=(user_name, password))
         else:
-            # print "User name and password required!"
-            jira = JIRA(base_url, basic_auth=(user_name, password))
+            print "User name and password required!"
         return jira
 
     @staticmethod
-    def get_jira_issues(self, jira, query):
+    def get_jira_issues_with_auth(query, user_name, password):
+        """
+        To get jira query result with user name and password.
+        :param query: 
+        :param user_name: 
+        :param password: 
+        :return: query result in json.
+        """
+        jira = JiraController.get_jira_user_auth(user_name, password)
+        return JiraController.get_jira_issues(jira, query)
+
+    @staticmethod
+    def get_jira_issues(jira, query):
+        """
+        To get jira issues for the given query
+        :param jira: 
+        :param query: 
+        :return: 
+        """
         issues = jira.search_issues(query, maxResults=1000)
         print type(issues)
 
-        # convert result object to dic first
-        issue_dic = []
-        for result in issues:
-            d = result.__dict__
-            issue_dic.append(d)
-
-        print "issue_dic"
-        print issue_dic
-
-        # issues_json = json.dumps(issue_dic)
-        # print "issues_json"
-        # print issues_json
-
-        # response_str = json.dumps(issues)
-        # print "======response_str======"
-        # print response_str
-        #
-        # response_json = json.loads(response_str)
-        # print "======response_json======"
-        # print response_json
-        #
-        # print type(json_str[0])
-        # for field_name in issues[0].raw['fields']:
-        #     print "Field:", field_name, "Value:", issues[0].raw['fields'][field_name]
-
-        # issues_json = json.dumps(issues)
-        issues_json = issues
-        print type(issues_json[0])
-        for field_name in issues[0].raw['fields']:
-            print "Field:", field_name, "Value:", issues[0].raw['fields'][field_name]
-
-        return issues_json
+        json_key_list = {
+            "keys": [],
+            "count": len(issues)
+        }
+        for issue in issues:
+            json_key_list["keys"] += [{
+                "key": issue.key
+            }]
+        print "build json" + str(json_key_list)
+        json_response = json.dumps(json_key_list)
+        print json_response
+        # json_response = json.loads(json_response)
+        return json_response
 
 if __name__ == '__main__':
     query = "project in ('Investor Tribe', LEN, INVENG, INVG) AND issuetype = Test AND labels != Obsolete " \
             "AND labels = API AND priority in (P0, P1) AND labels != low_priority AND component not in (Note_Split) " \
             "AND component = Orders_API AND project = LEN"
 
-    print JiraController.get_jira_issues(JiraController(),
-                                         JiraController().get_jira_user_auth(JiraController(),
-                                                                                 '',
-                                                                                 ''),
-                                         query)
+    print JiraController.get_jira_issues_with_auth(query, '', '')
