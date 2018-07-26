@@ -29,16 +29,16 @@ def getJenkinsData():
 	base_url="https://jenkins.prosper.com/job/Investor/job/QA"
 	return JenkinController.get_jenkin_job_test_results_with_auth(base_url,
 															 "stg2-investor-platform-order-tests",
-															 "DKalaria",
-															 "Jalebi@123")
-	# return JenkinController.get_jenkin_job_test_results(JenkinController(),JenkinController().get_jenkin_user_auth(JenkinController(),'DKalaria','Jalebi@123'), base_url, "stg2-investor-platform-order-tests",)
+															 "",
+															 "")
+	# return JenkinController.get_jenkin_job_test_results(JenkinController(),JenkinController().get_jenkin_user_auth(JenkinController(),'',''), base_url, "stg2-investor-platform-order-tests",)
 
 @app.route("/getJenkinsJobsList", methods=['GET'])
 def getJenkinsJobsList():
 	base_url="https://jenkins.prosper.com/job/Investor/job/QA"
 	return JenkinController.get_jenkin_jobs_list_with_user_auth(base_url,
-																"DKalaria",
-																"Jalebi@123")
+																"",
+																"")
 
 if __name__ == "__main__":
     sys.path.append('./service')
